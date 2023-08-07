@@ -8,7 +8,12 @@ java ee : servlet jsp
 --------------------------
 
 
+SW required : 
+	Java 11, sts 3.9, maven
+	
+	yes/No
 
 
+sts (eclipse) vs inteijide
 
 https://drive.google.com/drive/folders/1JBfnPn73Xvq2bZrsXgm0RBWOYO7fInJu?usp=drive_link
