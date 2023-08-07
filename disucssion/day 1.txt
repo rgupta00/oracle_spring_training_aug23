@@ -1,0 +1,14 @@
+pre req is done
+-----------------
+html js css
+sql psql
+jdbc
+core java
+java ee : servlet jsp
+--------------------------
+
+
+
+
+
+https://drive.google.com/drive/folders/1JBfnPn73Xvq2bZrsXgm0RBWOYO7fInJu?usp=drive_link

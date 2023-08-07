@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/11_productapp_hibernate"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/10_productapp_jdbc_java"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/09_productapp_jdbc_template"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/08_productapp_jdbc"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/07_productapp_jdbc_withoutspring"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/06_productapp_aop"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/05_productapp_java_config"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/04_productapp_annoatation"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/03_productapp_bean_lifecycle"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/02_productapp_xml"/>
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/01_productapp_why_di"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="/home/raj/Documents/oracle_spring_training_aug23/lab/code_stuff/1_core/01_productapp_why_di"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>
