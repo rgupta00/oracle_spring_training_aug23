@@ -59,6 +59,18 @@ public class AccountServiceImpl implements AccountService{
 		accountDao.updateAccount(fromAccount);
 		accountDao.updateAccount(toAccount);
 	}
+
+	@Override
+	public void addAccount(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAccount(int id) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 

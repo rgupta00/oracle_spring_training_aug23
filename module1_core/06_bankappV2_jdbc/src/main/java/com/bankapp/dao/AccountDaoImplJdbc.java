@@ -1,6 +1,7 @@
 package com.bankapp.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -59,7 +60,30 @@ public class AccountDaoImplJdbc implements AccountDao {
 
 	@Override
 	public Account getById(int id) {
-		return null;
+		Account account=null;
+		Connection connection=null;
+		try {
+			 connection=dataSource.getConnection();
+			PreparedStatement stmt=connection.prepareStatement("select * from account2 where id=?");
+			stmt.setInt(1, id);
+			ResultSet rs=stmt.executeQuery();
+			if(rs.next()) {
+				account=new Account(rs.getInt(1),rs.getString(2),rs.getDouble(3) );
+			}
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}finally {
+			if(connection!=null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return account;
+		
 	}
 
 	@Override
@@ -68,6 +92,27 @@ public class AccountDaoImplJdbc implements AccountDao {
 
 	@Override
 	public void addAccount(Account account) {
+		Connection connection=null;
+		try {
+			 connection=dataSource.getConnection();
+			 PreparedStatement	pstmt=connection
+						.prepareStatement("insert into account2(name,balance) values(?,?)");
+			pstmt.setString(1, account.getName());
+				pstmt.setDouble(2, account.getBalance());
+				pstmt.executeUpdate();
+				
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}finally {
+			if(connection!=null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		
 	}
 

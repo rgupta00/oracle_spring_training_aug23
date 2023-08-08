@@ -1,0 +1,183 @@
+Spring boot bank application step by step:
+----------------------------------------------
+
+public class Account {
+	private int id;
+	private String name;
+	private double balance;
+}
+
+
+
+public interface AccountDao {
+        public List<Account> getAll();
+	
+	public Account getById(int id);
+	
+	public void updateAccount(Account account);
+	
+	public void addAccount(Account account);
+	
+	public void deleteAccount(int id);
+}
+
+public class AccountDaoImplMap implements AccountDao {
+	
+	private Map<Integer, Account> accounts = new HashMap<>();
+
+	public AccountDaoImplMap() {
+		accounts.put(1, new Account(1, "sumit", 1000.00));
+		accounts.put(2, new Account(2, "amit", 1000.00));
+	}
+
+	@Override
+	public List<Account> getAll() {
+		System.out.println("getAll using hard coded collection...");
+		return new ArrayList<Account>(accounts.values());
+	}
+
+	@Override
+	public Account getById(int id) {
+		return accounts.get(id);
+	}
+
+	@Override
+	public void updateAccount(Account account) {
+		accounts.put(account.getId(), account);
+	}
+
+	@Override
+	public void addAccount(Account account) {
+	}
+
+	@Override
+	public void deleteAccount(int id) {
+	}
+
+}
+
+
+
+public interface AccountService {
+	
+	public List<Account> getAll();
+
+	public Account getById(int id);
+
+	public void deposit(int accId, double amount);
+	
+	public void withdraw(int accId, double amount);
+	
+	public void transfer(int fromAcc, int toAcc, double amount);
+}
+
+
+
+public class AccountServiceImpl implements AccountService{
+
+	private AccountDao accountDao;
+	
+	@Autowired
+	public AccountServiceImpl(AccountDao accountDao) {
+		this.accountDao = accountDao;
+	}
+
+	@Override
+	public List<Account> getAll() {
+		return accountDao.getAll();
+	}
+
+
+	@Override
+	public Account getById(int id) {
+		return accountDao.getById(id);
+	}
+
+	@Override
+	public void deposit(int accId, double amount) {
+		Account account=getById(accId);
+		account.setBalance(account.getBalance()+amount);
+		accountDao.updateAccount(account);
+	}
+
+	@Override
+	public void withdraw(int accId, double amount) {
+		Account account=getById(accId);
+		account.setBalance(account.getBalance()-amount);
+		accountDao.updateAccount(account);
+	}
+
+	@Override
+	public void transfer(int fromAcc, int toAcc, double amount) {
+		Account fromAccount=getById(fromAcc);
+		Account toAccount=getById(toAcc);
+		
+		fromAccount.setBalance(fromAccount.getBalance()-amount);
+		toAccount.setBalance(toAccount.getBalance()+amount);
+		
+		accountDao.updateAccount(fromAccount);
+		accountDao.updateAccount(toAccount);
+		
+	}
+
+}
+
+
+
+
+
+
+Spring boot :
+-------------------
+server.port=8090
+#server.servlet.context-path=/productapp
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Custom H2 Console URL
+spring.h2.console.path=/h2
+
+spring.jpa.hibernate.ddl-auto=update
+
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
+
+spring.jpa.show-sql=true 
+
+
+server.port=8090
+spring.datasource.url=jdbc:mysql://localhost:3306/edudb?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+spring.banner.location=classpath:banner.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

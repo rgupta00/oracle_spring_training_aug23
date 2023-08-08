@@ -1,0 +1,24 @@
+INFO  | 2023-08-07 15:40:27 | [main] web.Log4jDemo (Log4jDemo.java:13) - code is working till line no 13
+INFO  | 2023-08-07 15:43:36 | [main] service.AccountServiceImpl (AccountServiceImpl.java:65) - time taken to transfer method: 2001 ms
+INFO  | 2023-08-07 15:56:03 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to transfer method: 2001 ms
+INFO  | 2023-08-07 16:04:12 | [main] service.LoggingAspect (LoggingAspect.java:25) - time taken to transfer method: 2000 ms
+INFO  | 2023-08-07 16:08:20 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to transfer method: 2001 ms
+INFO  | 2023-08-07 16:09:43 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to transfer method: 0 ms
+INFO  | 2023-08-07 16:09:45 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to transfer method: 2000 ms
+INFO  | 2023-08-07 16:11:00 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 0 ms
+INFO  | 2023-08-07 16:11:02 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: transfer is 2000 ms
+INFO  | 2023-08-07 16:11:42 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 1 ms
+INFO  | 2023-08-07 16:11:44 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: transfer is 2000 ms
+INFO  | 2023-08-07 17:07:20 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 158 ms
+INFO  | 2023-08-08 10:16:42 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 132 ms
+INFO  | 2023-08-08 10:46:53 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 145 ms
+INFO  | 2023-08-08 10:48:43 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: addAccount is 218 ms
+INFO  | 2023-08-08 10:48:43 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 9 ms
+INFO  | 2023-08-08 10:58:26 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: deposit is 152 ms
+INFO  | 2023-08-08 10:58:26 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 4 ms
+INFO  | 2023-08-08 11:00:09 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: deposit is 172 ms
+INFO  | 2023-08-08 11:00:09 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 3 ms
+INFO  | 2023-08-08 11:02:59 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: deposit is 175 ms
+INFO  | 2023-08-08 11:02:59 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 3 ms
+INFO  | 2023-08-08 11:03:48 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: transfer is 183 ms
+INFO  | 2023-08-08 11:03:48 | [main] service.LoggingAspect (LoggingAspect.java:27) - time taken to exeuction method: getAll is 4 ms
