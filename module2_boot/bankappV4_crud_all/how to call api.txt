@@ -1,0 +1,19 @@
+http://localhost:8090/transactions/transfer
+
+{
+ "fromAccount":1,
+ "toAccount":2,
+ "amount":10
+}
+
+http://localhost:8090/transactions/deposit
+{
+        "accountId": 1,
+        "amount": 10.0
+}
+
+http://localhost:8090/transactions/withdraw
+{
+        "accountId": 1,
+        "amount": 10.0
+}
