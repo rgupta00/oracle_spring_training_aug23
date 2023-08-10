@@ -141,6 +141,46 @@ public class AccountController {
 }
 
 
+Good morning !
+We will start session at sharp 10:05AM
+
+
+Day 4:
+spring boot revision
+spring boot rest
+spring data  basics
+spring security basics
+resttemplate
+
+
+
+1.x
+.5x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+core java is gold 
+--------------------
+core java head first
+design pattern head first
+thinking in java
+
+
+
+
+
+
 
 Spring boot :
 -------------------

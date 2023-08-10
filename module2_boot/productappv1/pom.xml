@@ -8,7 +8,7 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.productapp</groupId>
 	<artifactId>productappv1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>productappv1</name>
@@ -17,31 +17,37 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	<!-- spring data -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- spring mvc -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+    <!-- spring devTools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!-- h2 database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- lombok : augen of getter setter -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- spring test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -49,6 +55,7 @@
 		</dependency>
 	</dependencies>
 
+	<!-- maven plugin -->
 	<build>
 		<plugins>
 			<plugin>
