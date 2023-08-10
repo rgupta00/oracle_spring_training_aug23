@@ -178,7 +178,12 @@ thinking in java
 
 
 
-
+{
+    "timestamp": "2023-08-10T06:39:37.544+00:00",
+    "status": 500,
+    "error": "Internal Server Error",
+    "toContact":"amit@oracle.com"
+}
 
 
 
@@ -216,6 +221,39 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 
 spring.banner.location=classpath:banner.txt
+
+
+
+
+Productapp			Customerapp
+
+			class Customer
+				id
+				name
+				phoneNumber
+				email
+				address
+				
+Lab excercise: customer application
+
+	controller layer ----- service layer ----------- dao layer ---- h2 database
+	
+Lunch time:1-2PM
+
+
+Ping me in case of any difficulty
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
