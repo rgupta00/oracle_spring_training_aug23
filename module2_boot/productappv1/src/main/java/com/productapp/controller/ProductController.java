@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,10 +42,13 @@ public class ProductController{
 	}
 	
 	//---add new product
+	//ResponseEntity= data + http status code
+	
 	//@RequestBody will force json parser to convert json to java object
 	@PostMapping(path = "products")
-	public Product addProduct(@RequestBody  Product product) {
-		return productService.addProduct(product);
+	public ResponseEntity<Product> addProduct(@RequestBody  Product product) {
+		Product productAdded= productService.addProduct(product);
+		return ResponseEntity.status(HttpStatus.CREATED).body(productAdded);
 	}
 	
 	//---------update the existing product
@@ -52,10 +57,13 @@ public class ProductController{
 		return productService.updateProduct(id, product);
 	}
 
+	//delete op status code 204
+	
 	//-----delete an existing product-------
 	@DeleteMapping(path = "products/{id}")
-	public void deleteProduct(@PathVariable(name="id") int id) {
+	public ResponseEntity<Void> deleteProduct(@PathVariable(name="id") int id) {
 		productService.deleteProduct(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 }
 
