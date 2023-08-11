@@ -20,7 +20,7 @@ public class CouponController {
 
 	@GetMapping(path = "coupons/{couponCode}")
 	public Coupon getCoupon( @PathVariable String couponCode) {
-		System.out.println("--------instance 1 is running-------------");
+		System.out.println("--------instance 2 is running-------------");
 		return couponService.getCoupon(couponCode);
 	}
 

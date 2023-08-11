@@ -38,14 +38,14 @@ public class OrderController {
 		//i need to call the product rest api to get the product details
 		
 		Product product=restTemplate
-				.getForObject("http://localhost:8082/productapp/products/"+productId, Product.class);
+				.getForObject("http://PRODUCTAPP-SERVICE/productapp/products/"+productId, Product.class);
 		
 		//i need to call customer rest api to get the customer details
 		Customer customer=restTemplate
-				.getForObject("http://localhost:8081/customerapp/customers/"+customerId, Customer.class);
+				.getForObject("http://CUSTOMERAPP-SERVICE/customerapp/customers/"+customerId, Customer.class);
 		
 		//i need to call coupon rest api to get coupon details
-		Coupon coupon=restTemplate.getForObject("http://localhost:8085/couponapp/coupons/"+couponCode, Coupon.class);
+		Coupon coupon=restTemplate.getForObject("http://COUPONAPP-SERVICE/couponapp/coupons/"+couponCode, Coupon.class);
 		
 		orderResponse.setCustomer(customer);
 		orderResponse.setProduct(product);
