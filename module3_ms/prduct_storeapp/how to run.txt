@@ -1,0 +1,64 @@
+
+Product store application : microservice
+______________________
+coupon	: 8085
+customer: 8081
+product :8082
+order : 8080
+
+
+
+http://localhost:8082/productapp/products/13
+{
+  "id": 13,
+  "name": "laptop",
+  "price": 236000.0
+}
+
+
+http://localhost:8081/customerapp/customers/1
+
+{
+  "id": 1,
+  "name": "ravi",
+  "email": "ravi@gmail.com"
+}
+
+
+http://localhost:8085/couponapp/coupons/SUPER20
+{
+  "id": 1,
+  "couponCode": "SUPER10",
+  "discountPercentage": 10,
+  "expiredOn": "2023-08-11T06:26:38.311+00:00"
+}
+
+
+Post
+http://localhost:8080/orderapp/orders
+
+{
+    "productId": 1,
+    "customerId": 5,
+    "couponCode":"SUPER10",
+    "qty":2
+}
+
+
+{
+    "id": 123,
+    "totalPrice": 472000.0,
+    "orderDate": "2023-08-11T06:52:21.494+00:00",
+    "customer": {
+        "id": 5,
+        "name": "ravi",
+        "email": "ravi@gmail.com"
+    },
+    "product": {
+        "id": 1,
+        "name": "laptop",
+        "price": 236000.0
+    }
+}
+
+
