@@ -1,0 +1,280 @@
+Kafka:
+______________
+
+Kafka is distributed event driven messaging system
+Millions of messages can be process per second
+mutiple producer multiple broker and consumer
+
+Kafka is distributed plateform: in production env kafk is reffered as kafka cluser 
+
+kafka cluser : made of more then one kafka server
+
+feature :
+* kafka is fault tolerence
+* in kafka cluster messages are replicated in multiple brokers
+* replication factor messages is present in all the brokers
+* kafka is scalable
+	we can add new brokers
+	we can increase no of consumers
+
+
+Download kafka:
+-------------
+https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+
+https://archive.apache.org/dist/kafka/2.8.0/
+
+change : zookeeper.properties
+dataDir=./data/zookeeper
+
+change: server.properties
+log.dirs=./data/kafka-logs
+
+5 steps 
+________
+1. Start Zookeeper(port 2181)
+____________________________
+sh bin/zookeeper-server-start.sh config/zookeeper.properties
+
+2. Start Kafka Broker (9090)
+____________________________
+sh bin/kafka-server-start.sh config/server.properties
+
+3. Create topic
+____________
+Topic: communication chennal on which producer put the messages and consumer consume the the data
+for performance consideration topic divided into partitions 
+If any partition is not working we keep replication
+
+sh bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic demoraj2 --partitions 3 --replication-factor 1
+
+
+delete a topic:
+------------------
+sh bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic demoraj2
+
+List out all topic names
+-------------------------
+sh bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+
+Describe topics
+-------------------------
+sh bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic demoraj2
+
+
+4. Start Producer
+__________________
+sh bin/kafka-console-producer.sh --broker-list localhost:9092 --topic demoraj2
+
+
+
+Send message
+How are you
+
+5> Receive message
+________________
+sh bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demoraj2 --from-beginning
+
+How are you
+
+
+
+
+
+
+
+Kafka on widow system:
+-------------------------
+
+1# Start the ZooKeeper service
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+# Start the Kafka broker service
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+STEP 3: CREATE A TOPIC TO STORE YOUR EVENTS
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic demoraj2 --partitions 3 --replication-factor 1
+
+
+STEP 4: WRITE SOME EVENTS INTO THE TOPIC
+.\bin\windows\kafka-console-producer.bat --topic demoraj2 --bootstrap-server localhost:9092
+
+
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic demoraj2
+
+
+
+STEP 5:  READ THE EVENTS
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic demoraj2 --from-beginning
+
+
+
+server.port=8080
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+
+
+
+
+server.port=8081
+spring.kafka.consumer.properties.spring.json.trusted.packages=*
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+
+
+
+
+
+
+
+
+
+Spring boot kafka hello world:
+__________________________________
+	
+Kafka producer:
+______________
+
+public class Product {
+	private int id;
+	private String name;
+	private double price;
+}
+
+
+@Service
+public class ProduceService {
+	
+	@Autowired
+	private KafkaTemplate<String, Product>kafkaTemplate;
+	
+	public void produce(Product product) {
+		System.out.println("message is send....");
+		kafkaTemplate.send("testdemo", product);
+	}
+}
+
+@RestController
+public class ProducerController {
+
+	@Autowired
+	private ProduceService produceService;
+	@PostMapping("producer")
+	public String callProducer(@RequestBody Product product) {
+		produceService.produce(product);
+		return "product added";
+	}
+}
+
+
+server.port=8080
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+
+
+Kafka consumer:
+______________
+public class Product {
+	private int id;
+	private String name;
+	private double price;
+}
+
+
+@Service
+public class ConsumerService {
+	@KafkaListener(topics = "testdemo", groupId = "my_topic_group_id")
+	public void consume(Product product) {
+		System.out.println(product);
+	}
+}
+
+server.port=8081
+spring.kafka.consumer.properties.spring.json.trusted.packages=*
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+
+
+
+Spring boot kafka binder:
+=========================
+
+Depdendency:
+spring-cloud-stream,spring-cloud-stream-binder-kafka
+
+spring:
+  cloud:
+    function:
+      definition: consumerBinding;processorBinding;producerBinding
+    stream:
+      bindings:
+        producerBinding-out-0:
+          destination: processor-topic
+        processorBinding-in-0:
+          destination: processor-topic
+        processorBinding-out-0:
+          destination: consumer-topic
+        consumerBinding-in-0:
+          destination: consumer-topic
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
+  
+  
+  @Bean
+    public Supplier<String> producerBinding() {
+        return () -> {
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return "new data";
+        };
+    }
+
+     //Processor will fetch data from one topic perform its logic and then send new/modified data to other topic.
+    @Bean
+    public Function<String, String> processorBinding() {
+        return s -> s + " :: " + System.currentTimeMillis();
+    }
+    //  Consumer will fetch data from topic
+    @Bean
+    public Consumer<String> consumerBinding() {
+        return s -> System.out.println("Data Consumed :: " + s.toUpperCase());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sh bin/kafka-console-producer.sh --broker-list localhost:9092 --topic consumerBinding-in-0
+
+sh bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic consumerBinding-in-0 --from-beginning
+
+consumerBinding-in-0
+
+
+
+
+
+
+
+
+
